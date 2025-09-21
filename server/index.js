@@ -16,10 +16,17 @@ const vlogSchema = new mongoose.Schema({
     description:String, 
     videourl:String 
 })
-const vlog = mongoose.model('vlog' ,vlogSchema)
-app.get('/' , (req,res)=>{
-    res.send("Hello Bro ")
+const Vlog = mongoose.model('Vlog' ,vlogSchema)
+app.get('/vlogs' , async(req,res)=>{
+    const vlogs = await Vlog.find();
+    res.json(vlogs)
+});
+app.post('/vlogs' ,async (req,res)=>{
+    const vlog = new Vlog(req.body);
+    await vlog.save();
+    res.json(vlog)
 })
+
 
 app.listen(3000 , ()=>{
     console.log("Runing on the Port ")

@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
-const AddVlog = () => {
+const AddVlog = ({fetchVlog}) => {
   const [title , setTitle] = useState("");
   const [description , setDescription] = useState("");
   const [videourl , setVideourl] = useState("");
   
   const handleSubmit = async (e)=>{
     e.preventDefault();
-
+    await axios.post('http://localhost:3000/vlogs',{title , description , videourl}) ;
+    setTitle("") ; setDescription("") ; setVideourl("");
+    fetchVlog();
   }
    return (
     <div>
