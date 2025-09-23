@@ -56,7 +56,6 @@ app.post('/vlogs', async (req, res) => {
   }
 });
 
-// Delete a vlog
 app.delete('/vlogs/:id', async (req, res) => {
   try {
     await Vlog.findByIdAndDelete(req.params.id);
@@ -67,5 +66,5 @@ app.delete('/vlogs/:id', async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+  console.log("Server running on port 3000 Check it");
 });
