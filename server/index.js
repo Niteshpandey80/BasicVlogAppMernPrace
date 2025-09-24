@@ -37,7 +37,7 @@ app.get('/vlogs/:id', async (req, res) => {
   try {
     const vlog = await Vlog.findById(req.params.id);
     if (!vlog) {
-      return res.status(404).json({ error: 'Vlog not found' });
+      return res.status(404).json({ error: 'Vlog is not found' });
     }
     res.json(vlog);
   } catch (err) {
@@ -59,7 +59,7 @@ app.post('/vlogs', async (req, res) => {
 app.delete('/vlogs/:id', async (req, res) => {
   try {
     await Vlog.findByIdAndDelete(req.params.id);
-    res.json({ message: "Deleted Successfully" });
+    res.json({ message: "Vlog Deleted Successfully" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
